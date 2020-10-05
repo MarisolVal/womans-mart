@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html style="background-color: #2c1f4d;">
+<!-- Elementos de la etiqueta <head> -->
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Mi pagina</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/mq.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body onload="startTime()" style="background-color: #2c1f4d">
+
+    <div>
+        <!-- Header-->
+        <div style="text-align: center; padding: 30px; background-color:black"><img style="width: 30%;" src="img/logo.png"></div>
+
+        <header style="padding-top: 15px;">
+            <!-- Menu de navegación -->
+
+            <nav>
+                <ul>
+
+                    <li class="menu-item">
+                        <a href="">
+                            <div>inicio</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">
+                            <div> <span onclick="men()"> Mensaje en Consola </span></div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="view/catalogo.html">
+                            <div>Catálogo</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">
+                            <div>
+                                <form role="search" method="get" id="searchform" action="">
+                                    <label for="s">
+                                      <i class="fas fa-search"></i>
+                                    </label>
+                                    <input type="text" value="" placeholder="Buscar..." class="" id="s" />
+                                </form>
+                            </div>
+                        </a>
+                        <li class="menu-item" style="scroll-margin: inherit;">
+                            <div>
+                                <a href="view/carrito.html">
+                                    <div>
+                                        <i class="fas fa-shopping-cart" style="font-size: 20px; padding-right: 20px;"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Sección 1 -->
+        <section>
+            <article style="background-color: #2c1f4d;">
+                <div style="background-color: white; text-align: center; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; padding-top: 20px; border-radius: 5px;">
+                    <img src="img/bienvenida.png" style="width: 30%;" alt="">
+                    <div class="card-group" style="padding: 5em;">
+                        <div class="card">
+                            <img src="./img/muestras.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="./img/zapatos.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="./img/tienda.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </article>
+        </section>
+
+
+
+        <!-- Pié de página -->
+
+        <footer>
+            <div>
+                <div class="foot ">
+                    <img src="../img/WM.png" alt="" style="width: 3em; padding-right:  5px;">
+                    <div>
+                        <a href="# "> Términos y condiciones </a> |
+                        <a href="# "> Política de privacidad</a> |
+                        <a href="# "><i class="fab fa-whatsapp "  style="font-size: 20px; "> </i>    5555555555</a> |
+                        <a href="# "><i class="fab fa-facebook " style="font-size: 20px; "> </i>   EscuelaDeCodigo</a>
+                        <div class="clockdate-wrapper ">
+                            <div id="fecha "></div>
+                            <div id="reloj "></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/js/inicio.js "></script>
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="js/socket-client.js "></script>
+    <script src="js/reloj.js "></script>
+    <script src="js/mensajeEnConsola.js "></script>
+</body>
+
+</html>
