@@ -3,90 +3,68 @@ const app = express();
 var listaF = new Array();
 var listaM = new Array();
 
-function cargarAct(req, res){
-  res.render('formulario/cargarAct', {
-     listaF: listaF,
-     listaM: listaM
-  });
+var formFem = {
+    "Barrer": 0,
+    "Lavar los platos": 0,
+    "Cocinar": 0,
+    "Planchar": 0,
+    "Ir al super": 0,
+    "Lavar la ropa": 0,
+};
+
+var formMas = {
+    "Barrer": 0,
+    "Lavar los platos": 0,
+    "Cocinar": 0,
+    "Planchar": 0,
+    "Ir al super": 0,
+    "Lavar la ropa": 0,
+};
+
+function cargarAct(req, res) {
+    res.render('formulario/cargarAct', {
+        listaF: listaF,
+        listaM: listaM
+    });
 }
 
-app.get('/cargarAct',(req,res)=>{
-  var actividad = req.query.actividad;
-  var genero = req.query.genero;
-  const arrayGen = ["femenino", "masculino"]
-  const arrayAct = {
-    "actividad":[
-      {nombre: "Ninguna", cantidad:  0},
-      {nombre: "Barrer", cantidad: 0},
-      {nombre: "Lavar los platos", cantidad: 0},
-      {nombre: "Cocinar", cantidad: 0},
-      {nombre: "Planchar", cantidad: 0},
-      {nombre: "Ir al super", cantidad: 0},
-      {nombre: "Lavar la ropa", cantidad: 0},
-    ]
-  }
+app.get('/cargarAct', (req, res) => {
+    var actividad = req.query.actividad;
+    var genero = req.query.genero;
 
-  if(arrayGen[0] === genero){
-   for( i = 0; i < arrayAct["actividad"].length; i++ ){
-     var act = arrayAct["actividad"][i].nombre;
-     if(act === actividad){
-      listaF.push({
-        actividad: act,
-        genero: genero
-      })
-     }
-   }
-  }else{
-   listaM.push({
-     actividad: actividad,
-     genero: genero
-   })
-  }
-
-  console.log(listaF);
-  console.log("***");
-  console.log(listaM);
-
+    if (genero === 'femenino') {
+        formFem[actividad] += 1;
+        return res.json({
+            genero,
+            formFem
+        });
+    } else {
+        formMas[actividad] += 1;
+        return res.json({
+            genero,
+            formMas
+        });
+    }
 });
 
 
-app.post( '/cargarAct',(req, res)=>{
-  var actividad = req.body.actividad;
-  var genero = req.body.genero;
-  const arrayGen = ["femenino", "masculino"]
-  const arrayAct = {
-    "actividad":[
-      {nombre: "Ninguna", cantidad:  0},
-      {nombre: "Barrer", cantidad: 0},
-      {nombre: "Lavar los platos", cantidad: 0},
-      {nombre: "Cocinar", cantidad: 0},
-      {nombre: "Planchar", cantidad: 0},
-      {nombre: "Ir al super", cantidad: 0},
-      {nombre: "Lavar la ropa", cantidad: 0},
-    ]
-  }
-
-  if(arrayGen[0] === genero){
-   for( i = 0; i < arrayAct["actividad"].length; i++ ){
-     var act = arrayAct["actividad"][i].nombre;
-     if(act === actividad){
-      listaF.push({
-        actividad: act,
-        genero: genero
-      })
-     }
-   }
-  }else{
-   listaM.push({
-     actividad: actividad,
-     genero: genero
-   })
-  }
-
-  console.log(listaF);
-  console.log("***");
-  console.log(listaM);
-
+app.post('/cargarAct', (req, res) => {
+    var actividad = req.body.actividad;
+    var genero = req.body.genero;
+    console.log(genero);
+    if (genero === 'femenino') {
+        formFem[actividad] += 1;
+        return res.json({
+            genero,
+            formFem
+        });
+    } else {
+        formMas[actividad] += 1;
+        return res.json({
+            genero,
+            formMas
+        });
+    }
 
 });
 
