@@ -1,23 +1,24 @@
 const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
-
 const path = require('path');
 
 const app = express();
 let server = http.createServer(app);
 
-const publicPath = path.resolve(__dirname, '../html');
+const publicPath = path.resolve(__dirname, '../public');
 const port = process.env.PORT || 3000;
 
 app.use(express.static(publicPath));
 
+app.use(express.urlencoded({extended:false})); 
+app.use(express.json());
+app.use(require('./routes/index'));
+
 // IO = esta es la comunicacion del backend
 module.exports.io = socketIO(server);
+require('./routes/formulario');
 require('./sockets/socket');
-
-
-
 
 
 server.listen(port, (err) => {

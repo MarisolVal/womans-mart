@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<!-- Elementos de la etiqueta <head> -->
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Mi pagina</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/mq.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="../js/libs/jquery.min.js"></script>
+</head>
+<script>
+    $(function() {
+        $("#header").load("header.html");
+    });
+</script>
+
+<body onload="startTime()" style="background-color: #2c1f4d; ">
+
+    <div>
+        <div id="header">
+            <!-- Header-->
+        </div>
+
+        <!-- Sección 1 -->
+        <section>
+            <article style="background-color: #2c1f4d;">
+                <div class="catalogo-titulo">
+                    <img src="../img/carritoT.png" alt="">
+                </div>
+                <div class="container" style="padding-bottom: 2.9rem;">
+                    <div id="divCarrito" class="card-deck" style="padding-top: 20px;">
+                        <!-- Producto -->
+                    </div>
+                </div>
+
+                <div id="divTotal" style="padding-top: 30px; color: aliceblue; font-size: 2em; ">
+
+                </div>
+            </article>
+        </section>
+    </div>
+    <!-- Pié de página -->
+    <div id="relojFooter">
+
+    </div>
+
+
+    <script src="../socket.io/socket.io.js"></script>
+    <script src="../js/socket-client.js "></script>
+    <script src="../js/reloj.js "></script>
+    <script src="../js/mensajeEnConsola.js "></script>
+</body>
+
+</html>
