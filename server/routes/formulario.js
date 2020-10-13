@@ -61,9 +61,41 @@ app.post('/cargarAct', (req, res) => {
 
 });
 
-// // app.put('/formulario',(req,res)=>{
+app.put('/cargarAct/:genero', (req, res) => {
+    var genero = req.params.genero;
+    var actividad = req.body.actividad;
+    var cantidad = req.body.cantidad;
+    actividad = actividad.split(' ');
+    actividad = actividad[actividad.length - 1];
+    console.log(genero);
+    if (genero === 'femenino') {
+        formFem[actividad] = cantidad;
+    } else {
+        formMas[actividad] = cantidad;
+    }
+    res.render('resultados', { fm: formFem, fh: formMas });
 
-// // });
+});
+app.delete('/cargarAct/:genero', (req, res) => {
+    var genero = req.params.genero;
+    var actividad = req.body.actividad;
+    if (genero === 'femenino') {
+        formFem[actividad] = 0;
+    } else {
+        formMas[actividad] = 0;
+    }
 
+    res.render('resultados', { fm: formFem, fh: formMas });
+});
+
+app.delete('/borrarTodo', (req, res) => {
+
+    for (const actividad in formFem) {
+        formFem[actividad] = 0;
+        formMas[actividad] = 0;
+    }
+
+    res.render('resultados', { fm: formFem, fh: formMas });
+});
 
 module.exports = app;
