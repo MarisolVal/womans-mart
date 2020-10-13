@@ -2,6 +2,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 const http = require('http');
 const path = require('path');
+const hbs = require('hbs');
 
 const app = express();
 let server = http.createServer(app);
@@ -11,7 +12,10 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(publicPath));
 
-app.use(express.urlencoded({extended:false})); 
+hbs.registerPartials(__dirname + '../public/view');
+app.set('view engine', 'hbs');
+
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(require('./routes/index'));
 
