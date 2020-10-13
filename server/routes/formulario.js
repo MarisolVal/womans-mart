@@ -70,8 +70,18 @@ app.put('/cargarAct/:genero', (req, res) => {
     console.log(genero);
     if (genero === 'femenino') {
         formFem[actividad] = cantidad;
+        return res.json({
+            actividad,
+            femenino: formFem,
+            mensaje: `se actualizó el conteo de la actvidad a ${cantidad}`
+        });
     } else {
         formMas[actividad] = cantidad;
+        return res.json({
+            actividad,
+            masculino: formMas,
+            mensaje: `se actualizó el conteo de la actvidad a ${cantidad}`
+        });
     }
     res.render('resultados', { fm: formFem, fh: formMas });
 
@@ -81,11 +91,21 @@ app.delete('/cargarAct/:genero', (req, res) => {
     var actividad = req.body.actividad;
     if (genero === 'femenino') {
         formFem[actividad] = 0;
+        return res.json({
+            actividad,
+            femenino: formFem,
+            mensaje: `se reinició el conteo la actividad ${actividad}`
+        });
     } else {
         formMas[actividad] = 0;
+        return res.json({
+            actividad,
+            masculino: formMas,
+            mensaje: `se reinició el conteo la actividad ${actividad}`
+        });
     }
 
-    res.render('resultados', { fm: formFem, fh: formMas });
+
 });
 
 app.delete('/borrarTodo', (req, res) => {
@@ -95,7 +115,11 @@ app.delete('/borrarTodo', (req, res) => {
         formMas[actividad] = 0;
     }
 
-    res.render('resultados', { fm: formFem, fh: formMas });
+    res.json({
+        mensaje: "Se reinició todo el conteo",
+        femenino: formFem,
+        masculino: formMas
+    }); 
 });
 
 module.exports = app;
