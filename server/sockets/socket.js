@@ -8,6 +8,7 @@ const carrito = new Carrito();
 
 io.on('connection', (client) => {
     client.on('crearProducto', (data, callback) => {
+        
         if (!data.nombre || !data.precio || !data.descripcion) {
             return;
         }

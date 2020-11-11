@@ -34,7 +34,8 @@ socket.on('cuenta', function(total) {
     totalCarrito(total);
 });
 
-function renderizarProductos(productos) { //[{},{},{}]
+function renderizarProductos(productos) {
+     //[{},{},{}]
     var html = '';
     divCatalogo.html(html);
     if (productos.length < 1) {
